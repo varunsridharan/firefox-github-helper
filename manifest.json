@@ -7,7 +7,7 @@
   "homepage_url"     : "https://github.com/varunsridharan/firefox-github-helper",
   "applications"     : {
 	"gecko" : {
-	  "id"                 : "varunsridharan23@gmail.com",
+	  "id"                 : "githubhelper@varunsridharan23",
 	  "strict_min_version" : "42.0"
 	}
   },

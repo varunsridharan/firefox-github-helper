@@ -1,3 +1,15 @@
+var getsRepoSlug   = function( url ) {
+	var pathes = url.split( '/' );
+	if( pathes.length < 2 ) {
+		return null;
+	}
+
+	if( pathes.length === 2 ) {
+		return pathes[ 0 ] + '/' + pathes[ 1 ];
+	} else if( ( pathes.length === 3 || pathes.length === 4 ) && pathes[ 0 ] === '' ) {
+		return pathes[ 1 ] + '/' + pathes[ 2 ];
+	}
+};
 var $get_repo_link = function( $elem ) {
 	var $form = $elem.getElementsByTagName( 'form' );
 	if( $form ) {
@@ -5,7 +17,8 @@ var $get_repo_link = function( $elem ) {
 			var $action = $form[ 0 ].getAttribute( 'action' );
 			$action     = $action.replace( 'start', '' );
 			$action     = $action.replace( 'unstar', '' );
-			return $action;
+			console.log( getsRepoSlug( $action ) );
+			return getsRepoSlug( $action );
 		}
 	}
 	return null;

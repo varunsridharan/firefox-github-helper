@@ -13,7 +13,7 @@
   },
   "manifest_version" : 2,
   "name"             : "Github Helper",
-  "version"          : "1.0",
+  "version"          : "2.1",
   "description"      : "This addon add usefull buttons in repo listing @ github",
   "icons"            : {
 	"48" : "icon-48.jpg",

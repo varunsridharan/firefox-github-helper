@@ -318,7 +318,9 @@ const add_repo_size = async() => {
 					if( $li ) {
 						if( $li.length > 0 ) {
 							for( var $li_k in $li ) {
-								embedRepoSize( $li[ $li_k ] );
+								if( typeof $li[ $li_k ] === 'object' ) {
+									embedRepoSize( $li[ $li_k ] );
+								}
 							}
 						}
 					}
@@ -332,8 +334,28 @@ const add_repo_size = async() => {
 		var $lis = $pinned_repos_list[ 0 ].getElementsByTagName( 'li' );
 		if( $lis && $lis.length > 0 ) {
 			for( var $k in $lis ) {
-				var $slug = $lis[ $k ].getElementsByClassName( 'text-bold' );
-				embedRepoSize( $lis[ $k ], $slug[ 0 ].getAttribute( 'href' ) );
+				if( typeof $lis[ $k ] === 'object' ) {
+					var $slug = $lis[ $k ].getElementsByClassName( 'text-bold' );
+					embedRepoSize( $lis[ $k ], $slug[ 0 ].getAttribute( 'href' ) );
+				}
+			}
+		}
+	}
+
+	var $orgrepos = document.getElementsByClassName( 'org-repos' );
+	for( var $k in $orgrepos ) {
+		if( typeof $orgrepos[ $k ] === 'object' ) {
+			var $lis = $orgrepos[ $k ].getElementsByTagName( 'li' );
+			for( var $li in $lis ) {
+				if( typeof $lis[ $li ] === 'object' ) {
+					var slug       = null;
+					var $title_div = $lis[ $li ].getElementsByTagName( 'h3' );
+					var $a         = $title_div[ 0 ].getElementsByTagName( 'a' );
+					slug           = $a[ 0 ].getAttribute( 'href' );
+					if( slug ) {
+						embedRepoSize( $lis[ $li ], slug );
+					}
+				}
 			}
 		}
 	}
